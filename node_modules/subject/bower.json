@@ -1,0 +1,17 @@
+{
+  "name": "subject",
+  "main": "built/subject.js",
+  "version": "0.5.9",
+  "description": "Builder-function based object inheritance chain.",
+  "dependencies": {
+    "lodash": "~2.4.1"
+  },
+  "devDependencies": {
+    "requirejs": "*",
+    "requirejs-text": "*",
+    "underscore": "*",
+    "jquery": "*",
+    "qunit": "*",
+    "backbone": "~1.1.2"
+  }
+}
