@@ -35,10 +35,12 @@ export default function RootLayout({
 			<body
 				className={cn("antialiased", geistSans.variable, geistMono.variable)}
 			>
-				<ClerkProvider>
+				<ClerkProvider publishableKey={publishableKey}>
 					<QueryClientProvider>{children}</QueryClientProvider>
 				</ClerkProvider>
 			</body>
 		</html>
 	);
 }
+
+const publishableKey = "pk_live_Y2xlcmsuYmRwcm8uaW4k"; // WARNING: Hardcoding API keys is not recommended for security. Use environment variables instead.
