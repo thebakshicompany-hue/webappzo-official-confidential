@@ -1,10 +1,8 @@
 import { z } from "zod";
 
 const serverSideEnvSchema = z.object({
-	VERCEL_ENV: z.enum(["development", "preview", "production"]),
-	VERCEL_GIT_PULL_REQUEST_ID: z
-		.string()
-		.transform((v) => (v === "" ? undefined : v)), // Treat an empty string as undefined
+	VERCEL_ENV: z.enum(["development", "preview", "production"]).default("production"),
+	VERCEL_GIT_PULL_REQUEST_ID: z.string().optional().default(""), // Treat an empty string as undefined
 });
 
 /**
