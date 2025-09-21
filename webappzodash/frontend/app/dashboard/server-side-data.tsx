@@ -22,7 +22,7 @@ export async function ServerSideData() {
 					This data is fetched from the backend using server components
 				</CardDescription>
 			</CardHeader>
-			<CardContent>{JSON.stringify(data)}</CardContent>
+			<CardContent>Server-side data loaded successfully.</CardContent>
 		</Card>
 	);
 }
