@@ -1,3 +1,6 @@
 [submodule "webappzobybbg"]
 	path = webappzobybbg
 	url = https://github.com/thebakshicompany-hue/webappzobybbg
+[submodule "webappzo-official-confidential"]
+	path = webappzo-official-confidential
+	url = https://github.com/thebakshicompany-hue/webappzo-official-confidential
