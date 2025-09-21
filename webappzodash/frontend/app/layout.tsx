@@ -35,12 +35,10 @@ export default function RootLayout({
 			<body
 				className={cn("antialiased", geistSans.variable, geistMono.variable)}
 			>
-				<ClerkProvider publishableKey={publishableKey}>
+				<ClerkProvider publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY}>
 					<QueryClientProvider>{children}</QueryClientProvider>
 				</ClerkProvider>
 			</body>
 		</html>
 	);
 }
-
-const publishableKey = "pk_live_Y2xlcmsuYmRwcm8uaW4k"; // WARNING: Hardcoding API keys is not recommended for security. Use environment variables instead.
