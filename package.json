@@ -1,5 +1,5 @@
 {
-  "dependencies": {
-    "dock": "^0.1.4"
+  "devDependencies": {
+    "netlify-cli": "^23.7.3"
   }
 }

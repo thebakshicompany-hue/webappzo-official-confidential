@@ -5,4 +5,4 @@
 
 # Enable the official Netlify Next.js runtime/plugin so routing & prerendering work correctly.
 [[plugins]]
-  package = "@netlify/nextjs"
+  package = "@netlify/plugin-nextjs"
