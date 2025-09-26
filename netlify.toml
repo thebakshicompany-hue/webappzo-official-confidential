@@ -1,4 +1,8 @@
 [build]
   command = "npm run build"
-  base = "webappzodash/frontend"
-  environment = { NODE_VERSION = "18", NPM_FLAGS = "--legacy-peer-deps", SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY", NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY = "pk_live_Y2xlcmsuaW50ZXJuYWx0b29scy5kZXYk" }
+  base    = "webappzodash/frontend"
+  environment = { NODE_VERSION = "18", NPM_FLAGS = "--legacy-peer-deps", SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY" }
+
+# Enable the official Netlify Next.js runtime/plugin so routing & prerendering work correctly.
+[[plugins]]
+  package = "@netlify/nextjs"
