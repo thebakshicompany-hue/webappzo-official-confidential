@@ -2,13 +2,14 @@ import {
 	Sidebar,
 	SidebarContent,
 	SidebarGroup,
+	SidebarGroupLabel,
 	SidebarHeader,
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { OrganizationSwitcher } from "@clerk/nextjs";
-import { Cog, LayoutDashboard, Wallet } from "lucide-react";
+import { OrganizationSelector } from "@/components/auth/organization-selector";
+import { Cog, LayoutDashboard, Video, PenTool, Circle, BarChart3, Rocket, Globe } from "lucide-react";
 import Link from "next/link";
 
 export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
@@ -17,10 +18,7 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 	return (
 		<Sidebar {...rest}>
 			<SidebarHeader>
-				<OrganizationSwitcher
-					hidePersonal
-					afterSelectOrganizationUrl="/dashboard"
-				/>
+				<OrganizationSelector />
 			</SidebarHeader>
 
 			<SidebarContent>
@@ -35,8 +33,43 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 						</SidebarMenuItem>
 						<SidebarMenuItem>
 							<SidebarMenuButton asChild>
-								<Link href="/dashboard/subscription">
-									<Wallet /> Subscription
+								<Link href="/dashboard/create-app">
+									<Rocket /> Create your app
+								</Link>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+						<SidebarMenuItem>
+							<SidebarMenuButton asChild>
+								<Link href="/dashboard/create-website">
+									<Globe /> Create your website
+								</Link>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+						<SidebarMenuItem>
+							<SidebarMenuButton asChild>
+								<Link href="/dashboard/meetings">
+									<Video /> Meetings
+								</Link>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+						<SidebarMenuItem>
+							<SidebarMenuButton asChild>
+								<Link href="/dashboard/whiteboard">
+									<PenTool /> Whiteboard
+								</Link>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+						<SidebarMenuItem>
+							<SidebarMenuButton asChild>
+								<Link href="/dashboard/recorder">
+									<Circle className="text-red-500" /> Recorder
+								</Link>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+						<SidebarMenuItem>
+							<SidebarMenuButton asChild>
+								<Link href="/dashboard/tracking">
+									<BarChart3 /> Tracking
 								</Link>
 							</SidebarMenuButton>
 						</SidebarMenuItem>

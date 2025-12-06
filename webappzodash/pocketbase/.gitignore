@@ -1,0 +1,9 @@
+# PocketBase data directory (contains SQLite database and files)
+pb_data/
+
+# PocketBase executable (will be downloaded)
+pocketbase.exe
+pocketbase
+
+# Download artifacts
+*.zip

@@ -21,7 +21,7 @@ export async function ServerSideData() {
 				<CardDescription>
 					This data is fetched from the backend using server components
 				</CardDescription>
-			</CardHeader>
+ 			</CardHeader>
 			<CardContent>Server-side data loaded successfully.</CardContent>
 		</Card>
 	);

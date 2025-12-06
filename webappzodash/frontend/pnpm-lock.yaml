@@ -122,6 +122,9 @@ importers:
       next-themes:
         specifier: ~0.4.4
         version: 0.4.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      pocketbase:
+        specifier: ^0.21.5
+        version: 0.21.5
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -156,6 +159,9 @@ importers:
         specifier: ~3.24.2
         version: 3.24.2
     devDependencies:
+      '@netlify/plugin-nextjs':
+        specifier: ^5.13.3
+        version: 5.15.1
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.0.9
@@ -347,6 +353,10 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
+
+  '@netlify/plugin-nextjs@5.15.1':
+    resolution: {integrity: sha512-HXm94tteOuA0FYwhkxjYIPe0zta+Dsu0wz7LnhfqVlaYcRaOLjHtd2vgfmpz3np/fx9TQg3gCfqGkXt2a9i7Aw==}
+    engines: {node: '>=18.0.0'}
 
   '@next/env@15.2.1':
     resolution: {integrity: sha512-JmY0qvnPuS2NCWOz2bbby3Pe0VzdAQ7XpEB6uLIHmtXNfAsAO0KLQLkuAoc42Bxbo3/jMC3dcn9cdf+piCcG2Q==}
@@ -1430,6 +1440,9 @@ packages:
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
+  pocketbase@0.21.5:
+    resolution: {integrity: sha512-bnI/uinnQps+ElSlzxkc4yvwuSFfKcoszDtXH/4QT2FhGq2mJVUvDlxn+rjRXVntUjPfmMG5LEPZ1eGqV6ssog==}
+
   postcss@8.4.31:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
     engines: {node: ^10 || ^12 || >=14}
@@ -1819,6 +1832,8 @@ snapshots:
 
   '@img/sharp-win32-x64@0.33.5':
     optional: true
+
+  '@netlify/plugin-nextjs@5.15.1': {}
 
   '@next/env@15.2.1': {}
 
@@ -2857,6 +2872,8 @@ snapshots:
   object-assign@4.1.1: {}
 
   picocolors@1.1.1: {}
+
+  pocketbase@0.21.5: {}
 
   postcss@8.4.31:
     dependencies:
