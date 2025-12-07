@@ -1,5 +1,11 @@
 [build]
+  base    = "webappzodash/frontend"
   command = "npm run build"
-  base    = "createxyz-project/_/apps/web"
-  publish = "createxyz-project/_/apps/web/dist"
-  environment = { NODE_VERSION = "18", NPM_FLAGS = "--legacy-peer-deps", SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY" }
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NEXT_PUBLIC_POCKETBASE_URL = "http://141.148.218.50:8090"
