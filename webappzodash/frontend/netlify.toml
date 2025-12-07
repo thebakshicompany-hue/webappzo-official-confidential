@@ -7,4 +7,4 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  NEXT_PUBLIC_POCKETBASE_URL = "http://141.148.218.50:8090"
+  NEXT_PUBLIC_POCKETBASE_URL = "https://pocketbase.bdpro.in"
