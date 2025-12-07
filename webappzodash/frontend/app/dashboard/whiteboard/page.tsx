@@ -1,7 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { ExternalLink, PenTool } from 'lucide-react';
+import { PenTool } from 'lucide-react';
 
 export default function WhiteboardPage() {
     const whiteboardUrl = 'https://basfwala.netlify.app/';
@@ -13,12 +12,6 @@ export default function WhiteboardPage() {
                     <PenTool className="h-5 w-5" />
                     <h1 className="text-lg font-semibold">Whiteboard</h1>
                 </div>
-                <Button variant="outline" size="sm" asChild>
-                    <a href={whiteboardUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Open in new tab
-                    </a>
-                </Button>
             </div>
             <div className="flex-1">
                 <iframe

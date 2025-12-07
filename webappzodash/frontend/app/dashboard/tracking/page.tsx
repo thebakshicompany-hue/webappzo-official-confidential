@@ -1,7 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { ExternalLink, BarChart3 } from 'lucide-react';
+import { BarChart3 } from 'lucide-react';
 
 export default function TrackingPage() {
     const trackingUrl = 'https://webappzo.zite.so';
@@ -13,12 +12,6 @@ export default function TrackingPage() {
                     <BarChart3 className="h-5 w-5" />
                     <h1 className="text-lg font-semibold">Track your website / app</h1>
                 </div>
-                <Button variant="outline" size="sm" asChild>
-                    <a href={trackingUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Open in new tab
-                    </a>
-                </Button>
             </div>
             <div className="flex-1">
                 <iframe

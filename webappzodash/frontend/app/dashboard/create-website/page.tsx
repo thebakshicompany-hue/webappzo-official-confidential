@@ -1,7 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { ExternalLink, Globe } from 'lucide-react';
+import { Globe } from 'lucide-react';
 
 export default function CreateWebsitePage() {
     const createWebsiteUrl = 'https://bdprobbg.fillout.com/wa';
@@ -13,12 +12,6 @@ export default function CreateWebsitePage() {
                     <Globe className="h-5 w-5" />
                     <h1 className="text-lg font-semibold">Create your website</h1>
                 </div>
-                <Button variant="outline" size="sm" asChild>
-                    <a href={createWebsiteUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Open in new tab
-                    </a>
-                </Button>
             </div>
             <div className="flex-1">
                 <iframe

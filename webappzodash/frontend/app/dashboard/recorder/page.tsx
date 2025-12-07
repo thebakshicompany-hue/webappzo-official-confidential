@@ -1,7 +1,6 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import { ExternalLink, Circle } from 'lucide-react';
+import { Circle } from 'lucide-react';
 
 export default function RecorderPage() {
     const recorderUrl = 'https://wcaptu.netlify.app/';
@@ -13,12 +12,6 @@ export default function RecorderPage() {
                     <Circle className="h-5 w-5 text-red-500" />
                     <h1 className="text-lg font-semibold">Recorder</h1>
                 </div>
-                <Button variant="outline" size="sm" asChild>
-                    <a href={recorderUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Open in new tab
-                    </a>
-                </Button>
             </div>
             <div className="flex-1">
                 <iframe
