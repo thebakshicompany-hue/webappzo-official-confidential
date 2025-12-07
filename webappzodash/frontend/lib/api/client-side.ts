@@ -1,5 +1,5 @@
 import { clientSideEnv } from "@/lib/env/client-side";
-import { useAuth } from "@clerk/nextjs";
+import pb from "@/lib/pocketbase";
 import Client, { Environment, Local, PreviewEnv } from "./encore-client";
 
 // Get the correct encore environment
@@ -21,13 +21,11 @@ if (clientSideEnv.NEXT_PUBLIC_VERCEL_ENV === "production") {
  * Meant to be used to use on the client side.
  */
 export function useApiClient() {
-	const { getToken } = useAuth();
-
 	return new Client(environment, {
 		auth: async () => {
-			const token = await getToken();
+			const token = pb.authStore.token;
 			return {
-				authorization: `Bearer ${token}`,
+				authorization: token ? `Bearer ${token}` : "",
 			};
 		},
 	});

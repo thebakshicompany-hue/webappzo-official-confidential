@@ -16,11 +16,13 @@ import { useUser } from "@clerk/clerk-react";
 // import TwoFilloutSliders from "@/components/FilloutSlider";
 import TwoFilloutSliders from "@/components/TwoFilloutSliders";
 import EmbedManager from "./EmbedManager";
+import useAuth from "@/utils/useAuth";
 
 export default function DashboardPage() {
   const [animationsVisible, setAnimationsVisible] = useState(false);
   const [welcomeVisible, setWelcomeVisible] = useState(false);
   const { user, isSignedIn, isLoaded } = useUser();
+  const { signOut } = useAuth();
 
   useEffect(() => {
     // First show the welcome animation
@@ -140,12 +142,18 @@ export default function DashboardPage() {
                     {(user?.firstName?.[0] || user?.emailAddresses?.[0]?.emailAddress?.[0] || 'U').toUpperCase()}
                   </div>
                 </div>
-                <a
-                  href="/account/logout"
+                <button
+                  onClick={async () => {
+                    try {
+                      await signOut();
+                    } catch (err) {
+                      console.error('Error signing out:', err);
+                    }
+                  }}
                   className="p-2 text-gray-600 hover:text-red-500 hover:bg-red-50 rounded-xl transition-all duration-200"
                 >
                   <LogOut size={20} />
-                </a>
+                </button>
               </div>
             </div>
           </header>

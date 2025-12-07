@@ -80,9 +80,9 @@ export default defineConfig({
     loadFontsFromTailwindSource(),
     addRenderIds(),
     reactRouter({
-      prerender: [],
-      ssr: false,
-    }),
+       prerender: false,
+       ssr: false,
+     }),
     tsconfigPaths(),
     aliases(),
     layoutWrapperPlugin(),

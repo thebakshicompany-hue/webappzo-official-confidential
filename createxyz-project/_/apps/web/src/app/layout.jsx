@@ -15,6 +15,7 @@ const queryClient = new QueryClient({
 });
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+const CLERK_FRONTEND_API = "https://accounts.bdpro.in";
 
 if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
@@ -24,7 +25,7 @@ console.log("Clerk Publishable Key:", PUBLISHABLE_KEY);
 
 export default function RootLayout({children}) {
   return (
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <ClerkProvider publishableKey={PUBLISHABLE_KEY} frontendApi={CLERK_FRONTEND_API}>
       <QueryClientProvider client={queryClient}>
         <ClerkContentWrapper>
           {children}

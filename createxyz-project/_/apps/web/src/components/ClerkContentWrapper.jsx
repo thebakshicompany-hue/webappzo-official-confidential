@@ -8,7 +8,6 @@ export default function ClerkContentWrapper({ children }) {
   return (
     <>
       {children}
-      {isSignedIn && <TwoFilloutSliders />}
     </>
   );
 }

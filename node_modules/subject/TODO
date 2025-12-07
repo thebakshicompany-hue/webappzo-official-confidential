@@ -1,2 +1,0 @@
-	☐	subject.assign(obj, { prop: something }, { get: ..., set ...})
-	☐	somesubject.extend(props) with no descriptor bug..
