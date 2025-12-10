@@ -25,11 +25,7 @@ export default function AppsPage() {
     }, []);
 
     const loadApps = async () => {
-        const orgId = localStorage.getItem('currentOrgId');
-        if (!orgId) {
-            setLoading(false);
-            return;
-        }
+        const orgId = localStorage.getItem('currentOrgId') || 'guest';
         const fetchedApps = await getApps(orgId);
         setApps(fetchedApps);
         setLoading(false);

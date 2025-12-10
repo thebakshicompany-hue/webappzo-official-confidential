@@ -3,20 +3,47 @@
 import pb from '@/lib/pocketbase';
 import type { EmbeddedApp } from '@/lib/pocketbase';
 
+const HARDCODED_APPS: EmbeddedApp[] = [
+    {
+        id: 'video-editor',
+        name: 'Video Editor',
+        url: 'https://v0-webappzo-editz.vercel.app/',
+        icon: '🎬',
+        organization: 'system',
+        created_by: 'system',
+        created: new Date().toISOString(),
+        updated: new Date().toISOString(),
+    },
+    {
+        id: 'calculator',
+        name: 'Calculator',
+        url: 'https://staging-calculator-app-e7qi.frontend.encr.app/',
+        icon: '🧮',
+        organization: 'system',
+        created_by: 'system',
+        created: new Date().toISOString(),
+        updated: new Date().toISOString(),
+    }
+];
+
 export async function getApps(organizationId: string): Promise<EmbeddedApp[]> {
     try {
         const records = await pb.collection('embedded_apps').getFullList<EmbeddedApp>({
             filter: `organization = "${organizationId}"`,
             sort: 'name',
         });
-        return records;
+        return [...HARDCODED_APPS, ...records];
     } catch (error) {
         console.error('Failed to fetch apps:', error);
-        return [];
+        // Return hardcoded apps even if DB fails
+        return HARDCODED_APPS;
     }
 }
 
 export async function getApp(appId: string): Promise<EmbeddedApp | null> {
+    const hardcodedApp = HARDCODED_APPS.find(app => app.id === appId);
+    if (hardcodedApp) return hardcodedApp;
+
     try {
         const record = await pb.collection('embedded_apps').getOne<EmbeddedApp>(appId);
         return record;
