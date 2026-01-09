@@ -75,7 +75,7 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 						</SidebarMenuItem>
 						<SidebarMenuItem>
 							<SidebarMenuButton asChild>
-								<Link href="https://sites.google.com/view/webappzobrowser/browser">
+								<Link href="/dashboard/browser">
 									<AppWindow /> Browser
 								</Link>
 							</SidebarMenuButton>
