@@ -3,7 +3,7 @@
 import { AppWindow } from 'lucide-react';
 
 export default function BrowserPage() {
-    const browserUrl = 'https://sites.google.com/view/webappzobrowser/browser';
+    const browserUrl = 'https://browser.bdpro.in/';
 
     return (
         <div className="h-[calc(100vh-80px)] flex flex-col">
