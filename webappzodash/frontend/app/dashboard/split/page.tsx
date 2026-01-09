@@ -3,12 +3,16 @@
 import { useState } from 'react';
 import { RecorderView } from '@/components/dashboard/recorder-view';
 import { BrowserView } from '@/components/dashboard/browser-view';
+import { WhiteboardView } from '@/components/dashboard/whiteboard-view';
+import { MeetingsView } from '@/components/dashboard/meetings-view';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Columns } from 'lucide-react';
 
 const APPS = {
     recorder: { label: 'Recorder', component: RecorderView },
     browser: { label: 'Browser', component: BrowserView },
+    whiteboard: { label: 'Whiteboard', component: WhiteboardView },
+    meetings: { label: 'Meetings', component: MeetingsView },
 };
 
 type AppKey = keyof typeof APPS;
