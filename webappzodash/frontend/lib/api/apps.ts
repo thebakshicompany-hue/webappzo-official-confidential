@@ -3,7 +3,7 @@
 import pb from '@/lib/pocketbase';
 import type { EmbeddedApp } from '@/lib/pocketbase';
 
-const HARDCODED_APPS: EmbeddedApp[] = [
+export const HARDCODED_APPS: EmbeddedApp[] = [
     {
         id: 'video-editor',
         name: 'Video Editor',
@@ -11,8 +11,8 @@ const HARDCODED_APPS: EmbeddedApp[] = [
         icon: '🎬',
         organization: 'system',
         created_by: 'system',
-        created: new Date().toISOString(),
-        updated: new Date().toISOString(),
+        created: '2023-12-08T12:00:00.000Z',
+        updated: '2023-12-08T12:00:00.000Z',
     },
     {
         id: 'calculator',
@@ -21,8 +21,18 @@ const HARDCODED_APPS: EmbeddedApp[] = [
         icon: '🧮',
         organization: 'system',
         created_by: 'system',
-        created: new Date().toISOString(),
-        updated: new Date().toISOString(),
+        created: '2023-12-08T12:00:00.000Z',
+        updated: '2023-12-08T12:00:00.000Z',
+    },
+    {
+        id: 'edit-app-website',
+        name: 'Edit your app / website',
+        url: 'https://bdprobbg.fillout.com/t/aPV4puDazFus',
+        icon: '📝',
+        organization: 'system',
+        created_by: 'system',
+        created: '2023-12-08T12:00:00.000Z',
+        updated: '2023-12-08T12:00:00.000Z',
     }
 ];
 

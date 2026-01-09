@@ -26,6 +26,7 @@
     min-height: 100vh;
     background: #000;
     overflow: hidden;
+    z-index: -1;
 }
 
 .animated-circle {
@@ -33,6 +34,7 @@
     border-radius: 50%;
     border: 3px solid;
     animation: pulse 4s ease-in-out infinite;
+    z-index: -1;
 }
 
 .auth-card-overlay {
@@ -62,6 +64,7 @@
     animation: rotate 8s linear infinite;
     filter: blur(60px);
     opacity: 0.8;
+    z-index: -1;
 }
 
 .theme-neon .animated-bg::after {
@@ -82,6 +85,7 @@
     animation: rotate 12s linear infinite reverse;
     filter: blur(70px);
     opacity: 0.6;
+    z-index: -1;
 }
 
 .theme-neon .circle-1 {
@@ -133,6 +137,7 @@
     animation: rotate 10s linear infinite;
     filter: blur(60px);
     opacity: 0.8;
+    z-index: -1;
 }
 
 .theme-ocean .animated-bg::after {
@@ -153,6 +158,7 @@
     animation: rotate 14s linear infinite reverse;
     filter: blur(70px);
     opacity: 0.6;
+    z-index: -1;
 }
 
 .theme-ocean .circle-1 {
@@ -204,6 +210,7 @@
     animation: rotate 8s linear infinite;
     filter: blur(60px);
     opacity: 0.8;
+    z-index: -1;
 }
 
 .theme-sunset .animated-bg::after {
@@ -224,6 +231,7 @@
     animation: rotate 12s linear infinite reverse;
     filter: blur(70px);
     opacity: 0.6;
+    z-index: -1;
 }
 
 .theme-sunset .circle-1 {
@@ -275,6 +283,7 @@
     animation: rotate 10s linear infinite;
     filter: blur(60px);
     opacity: 0.8;
+    z-index: -1;
 }
 
 .theme-aurora .animated-bg::after {
@@ -295,6 +304,7 @@
     animation: rotate 14s linear infinite reverse;
     filter: blur(70px);
     opacity: 0.6;
+    z-index: -1;
 }
 
 .theme-aurora .circle-1 {
@@ -346,6 +356,7 @@
     animation: rotate 12s linear infinite;
     filter: blur(80px);
     opacity: 0.5;
+    z-index: -1;
 }
 
 .theme-minimal .animated-bg::after {
@@ -366,6 +377,7 @@
     animation: rotate 16s linear infinite reverse;
     filter: blur(90px);
     opacity: 0.4;
+    z-index: -1;
 }
 
 .theme-minimal .circle-1 {

@@ -14,11 +14,11 @@ export default function DashboardLayout({
 	children,
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
-		<SidebarProvider>
+		<SidebarProvider className="h-full">
 			<AppSidebar collapsible="offcanvas" className="bg-transparent/50 backdrop-blur-sm" />
 
-			<div className="w-full flex flex-col bg-transparent">
-				<header className="flex items-center px-2 py-2 gap-2 bg-background/40 backdrop-blur-md border-b border-white/10">
+			<div className="w-full h-full flex flex-col bg-transparent">
+				<header className="flex items-center px-2 py-2 gap-2 bg-background/40 backdrop-blur-md border-b border-white/10 shrink-0">
 					<SidebarTrigger />
 					<Separator orientation="vertical" />
 
@@ -39,7 +39,7 @@ export default function DashboardLayout({
 					</div>
 				</header>
 
-				<div className="px-2 py-2">{children}</div>
+				<div className="flex-1 overflow-hidden">{children}</div>
 			</div>
 		</SidebarProvider>
 	);

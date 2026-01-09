@@ -3,15 +3,19 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.5;
   }
@@ -22,6 +26,7 @@
   min-height: 100vh;
   background: #000;
   overflow: hidden;
+  z-index: -1;
 }
 
 .animated-auth-bg::before {
@@ -31,19 +36,18 @@
   left: 50%;
   width: 600px;
   height: 600px;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    #ff0080 90deg,
-    #ffff00 180deg,
-    #00ff00 270deg,
-    transparent 360deg
-  );
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      #ff0080 90deg,
+      #ffff00 180deg,
+      #00ff00 270deg,
+      transparent 360deg);
   border-radius: 50%;
   transform: translate(-50%, -50%) rotate(0deg);
   animation: rotate 8s linear infinite;
   filter: blur(60px);
   opacity: 0.8;
+  z-index: -1;
 }
 
 .animated-auth-bg::after {
@@ -53,19 +57,18 @@
   left: 50%;
   width: 500px;
   height: 500px;
-  background: conic-gradient(
-    from 180deg,
-    transparent 0deg,
-    #00ffff 90deg,
-    #ff00ff 180deg,
-    #ffff00 270deg,
-    transparent 360deg
-  );
+  background: conic-gradient(from 180deg,
+      transparent 0deg,
+      #00ffff 90deg,
+      #ff00ff 180deg,
+      #ffff00 270deg,
+      transparent 360deg);
   border-radius: 50%;
   transform: translate(-50%, -50%) rotate(0deg);
   animation: rotate 12s linear infinite reverse;
   filter: blur(70px);
   opacity: 0.6;
+  z-index: -1;
 }
 
 .animated-circle {
@@ -73,6 +76,7 @@
   border-radius: 50%;
   border: 3px solid;
   animation: pulse 4s ease-in-out infinite;
+  z-index: -1;
 }
 
 .circle-1 {

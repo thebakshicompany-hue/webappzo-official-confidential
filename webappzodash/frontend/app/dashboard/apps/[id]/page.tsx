@@ -4,9 +4,6 @@ import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { getApp } from '@/lib/api/apps';
 import type { EmbeddedApp } from '@/lib/pocketbase';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
-import Link from 'next/link';
 
 export default function AppViewPage() {
     const params = useParams();
@@ -31,7 +28,7 @@ export default function AppViewPage() {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center h-full">
+            <div className="flex items-center justify-center h-[calc(100vh-80px)]">
                 <p>Loading...</p>
             </div>
         );
@@ -42,34 +39,22 @@ export default function AppViewPage() {
     }
 
     return (
-        <div className="h-full flex flex-col">
-            <div className="flex items-center gap-4 p-4 border-b bg-background/60 backdrop-blur-sm">
-                <Button variant="ghost" size="icon" asChild>
-                    <Link href="/dashboard/apps">
-                        <ArrowLeft className="h-4 w-4" />
-                    </Link>
-                </Button>
-                <div className="flex-1">
-                    <h1 className="text-lg font-semibold flex items-center gap-2">
-                        {app.icon && <span>{app.icon}</span>}
-                        {app.name}
-                    </h1>
+        <div className="h-[calc(100vh-80px)] flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b bg-background/60 backdrop-blur-sm">
+                <div className="flex items-center gap-2">
+                    {app.icon && <span className="text-xl">{app.icon}</span>}
+                    <h1 className="text-lg font-semibold">{app.name}</h1>
                 </div>
-                <Button variant="outline" size="sm" asChild>
-                    <a href={app.url} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Open in new tab
-                    </a>
-                </Button>
             </div>
             <div className="flex-1">
                 <iframe
                     src={app.url}
                     className="w-full h-full border-0"
                     title={app.name}
-                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+                    allow="camera; microphone; fullscreen; display-capture; clipboard-read; clipboard-write"
                 />
             </div>
         </div>
     );
 }
+

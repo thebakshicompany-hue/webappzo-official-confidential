@@ -6,14 +6,15 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { getApps, createApp, deleteApp } from '@/lib/api/apps';
+import { getApps, createApp, deleteApp, HARDCODED_APPS } from '@/lib/api/apps';
 import type { EmbeddedApp } from '@/lib/pocketbase';
 import { Plus, Trash2, ExternalLink, AppWindow } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AppsPage() {
-    const [apps, setApps] = useState<EmbeddedApp[]>([]);
-    const [loading, setLoading] = useState(true);
+    // Initial state with hardcoded apps
+    const [apps, setApps] = useState<EmbeddedApp[]>(HARDCODED_APPS);
+    const [loading, setLoading] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
     const [newAppName, setNewAppName] = useState('');
     const [newAppUrl, setNewAppUrl] = useState('');
@@ -74,7 +75,7 @@ export default function AppsPage() {
         <main className="container max-w-4xl py-6 space-y-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-3xl font-semibold">Embedded Apps</h1>
+                    <h1 className="text-3xl font-semibold">Embedded Apps (System Apps)</h1>
                     <p className="text-muted-foreground">Manage your embedded applications</p>
                 </div>
                 <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>

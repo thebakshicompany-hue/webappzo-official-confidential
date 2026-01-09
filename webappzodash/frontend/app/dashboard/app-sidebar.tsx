@@ -9,7 +9,7 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { OrganizationSelector } from "@/components/auth/organization-selector";
-import { Cog, LayoutDashboard, Video, PenTool, Circle, BarChart3, Rocket, Globe } from "lucide-react";
+import { Cog, LayoutDashboard, Video, PenTool, Circle, BarChart3, Rocket, Globe, Calculator, AppWindow, Edit } from "lucide-react";
 import Link from "next/link";
 
 export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
@@ -47,6 +47,13 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 						</SidebarMenuItem>
 						<SidebarMenuItem>
 							<SidebarMenuButton asChild>
+								<Link href="/dashboard/apps/edit-app-website">
+									<Edit /> Edit your app / website
+								</Link>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+						<SidebarMenuItem>
+							<SidebarMenuButton asChild>
 								<Link href="/dashboard/meetings">
 									<Video /> Meetings
 								</Link>
@@ -68,6 +75,13 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 						</SidebarMenuItem>
 						<SidebarMenuItem>
 							<SidebarMenuButton asChild>
+								<Link href="https://sites.google.com/view/webappzobrowser/browser">
+									<AppWindow /> Browser
+								</Link>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+						<SidebarMenuItem>
+							<SidebarMenuButton asChild>
 								<Link href="/dashboard/tracking">
 									<BarChart3 /> Tracking
 								</Link>
@@ -77,6 +91,13 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 							<SidebarMenuButton asChild>
 								<Link href="/dashboard/settings">
 									<Cog /> Settings
+								</Link>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+						<SidebarMenuItem>
+							<SidebarMenuButton asChild>
+								<Link href="/dashboard/apps/calculator">
+									<Calculator /> Calculator
 								</Link>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
