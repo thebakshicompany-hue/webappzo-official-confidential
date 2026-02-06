@@ -27,7 +27,7 @@ export const HARDCODED_APPS: EmbeddedApp[] = [
     {
         id: 'edit-app-website',
         name: 'Edit your app / website',
-        url: 'https://bdprobbg.fillout.com/t/aPV4puDazFus',
+        url: 'https://tally.so/r/A7B9Go',
         icon: '📝',
         organization: 'system',
         created_by: 'system',
