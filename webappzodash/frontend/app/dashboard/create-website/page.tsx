@@ -3,7 +3,7 @@
 import { Globe } from 'lucide-react';
 
 export default function CreateWebsitePage() {
-    const createWebsiteUrl = 'https://bdprobbg.fillout.com/wa';
+    const createWebsiteUrl = 'https://tally.so/r/44KkdB';
 
     return (
         <div className="h-[calc(100vh-80px)] flex flex-col">

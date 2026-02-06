@@ -3,7 +3,7 @@
 import { Rocket } from 'lucide-react';
 
 export default function CreateAppPage() {
-    const createAppUrl = 'https://bdprobbg.fillout.com/wb';
+    const createAppUrl = 'https://tally.so/r/ob2zvX';
 
     return (
         <div className="h-[calc(100vh-80px)] flex flex-col">
