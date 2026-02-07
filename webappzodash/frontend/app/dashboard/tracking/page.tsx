@@ -3,7 +3,7 @@
 import { BarChart3 } from 'lucide-react';
 
 export default function TrackingPage() {
-    const trackingUrl = 'https://webappzo.zite.so';
+    const trackingUrl = 'https://anaw.zite.so';
 
     return (
         <div className="h-[calc(100vh-80px)] flex flex-col">
