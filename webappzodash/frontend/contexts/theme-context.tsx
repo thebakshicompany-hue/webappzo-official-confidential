@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 
-export type ThemeName = 'neon' | 'ocean' | 'sunset' | 'aurora' | 'minimal';
+export type ThemeName = 'neon' | 'ocean' | 'sunset' | 'aurora' | 'minimal' | 'plasma';
 
 export interface ThemeOption {
     name: ThemeName;
@@ -16,6 +16,7 @@ export const themes: ThemeOption[] = [
     { name: 'sunset', label: 'Sunset', colors: ['#ff6600', '#ff3366', '#cc00ff'] },
     { name: 'aurora', label: 'Aurora', colors: ['#00ff88', '#8800ff', '#00aaff'] },
     { name: 'minimal', label: 'Minimal', colors: ['#666666', '#999999', '#cccccc'] },
+    { name: 'plasma', label: 'Plasma', colors: ['#ff0066', '#00ffff', '#0088ff'] },
 ];
 
 interface ThemeContextType {
