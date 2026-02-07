@@ -8,7 +8,7 @@ import { WeatherWidget } from "@/components/widgets/weather-widget";
 import { NotesWidget } from "@/components/widgets/notes-widget";
 import { AppWidget } from "@/components/widgets/app-widget";
 import { WidgetGrid, WidgetConfig } from "@/components/widgets/widget-grid";
-import { Circle, AppWindow, PenTool, Video, FileText, BarChart3, Cog, Rocket, Globe, Edit, Columns, Calculator } from "lucide-react";
+import { Circle, AppWindow, PenTool, Video, FileText, BarChart3, Cog, Rocket, Globe, Edit, Columns, Calculator, Database } from "lucide-react";
 
 const availableWidgets: WidgetConfig[] = [
 	{ id: 'clock', name: 'Clock', component: <ClockWidget /> },
@@ -19,6 +19,7 @@ const availableWidgets: WidgetConfig[] = [
 	{ id: 'whiteboard', name: 'Whiteboard', component: <AppWidget name="Whiteboard" href="/dashboard/whiteboard" icon={PenTool} color="text-green-500" description="Digital whiteboard" /> },
 	{ id: 'meetings', name: 'Meetings', component: <AppWidget name="Meetings" href="/dashboard/meetings" icon={Video} color="text-purple-500" description="Video meetings" /> },
 	{ id: 'pdf-viewer', name: 'PDF Viewer', component: <AppWidget name="PDF Viewer" href="/dashboard/pdf-viewer" icon={FileText} color="text-orange-500" description="View PDF files" /> },
+	{ id: 'data-collection', name: 'Data Collection', component: <AppWidget name="Data Collection" href="/dashboard/data-collection" icon={Database} color="text-indigo-500" description="Collect user data" /> },
 	{ id: 'tracking', name: 'Tracking', component: <AppWidget name="Tracking" href="/dashboard/tracking" icon={BarChart3} color="text-teal-500" description="Analytics & tracking" /> },
 	{ id: 'settings', name: 'Settings', component: <AppWidget name="Settings" href="/dashboard/settings" icon={Cog} color="text-gray-500" description="App settings" /> },
 	{ id: 'create-app', name: 'Create App', component: <AppWidget name="Create App" href="/dashboard/create-app" icon={Rocket} color="text-pink-500" description="Build your app" /> },

@@ -6,6 +6,7 @@ import { BrowserView } from '@/components/dashboard/browser-view';
 import { WhiteboardView } from '@/components/dashboard/whiteboard-view';
 import { MeetingsView } from '@/components/dashboard/meetings-view';
 import { PdfView } from '@/components/dashboard/pdf-view';
+import { DataCollectionView } from '@/components/dashboard/data-collection-view';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Columns } from 'lucide-react';
 
@@ -15,6 +16,7 @@ const APPS = {
     whiteboard: { label: 'Whiteboard', component: WhiteboardView },
     meetings: { label: 'Meetings', component: MeetingsView },
     pdfViewer: { label: 'PDF Viewer', component: PdfView },
+    dataCollection: { label: 'Data Collection', component: DataCollectionView },
 };
 
 type AppKey = keyof typeof APPS;

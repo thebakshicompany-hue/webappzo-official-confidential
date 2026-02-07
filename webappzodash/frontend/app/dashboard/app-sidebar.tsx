@@ -9,7 +9,7 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { OrganizationSelector } from "@/components/auth/organization-selector";
-import { Cog, LayoutDashboard, Video, PenTool, Circle, BarChart3, Rocket, Globe, Calculator, AppWindow, Edit, Columns, FileText } from "lucide-react";
+import { Cog, LayoutDashboard, Video, PenTool, Circle, BarChart3, Rocket, Globe, Calculator, AppWindow, Edit, Columns, FileText, Database } from "lucide-react";
 import Link from "next/link";
 
 export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
@@ -98,6 +98,13 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 							<SidebarMenuButton asChild>
 								<Link href="/dashboard/tracking">
 									<BarChart3 /> Tracking
+								</Link>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+						<SidebarMenuItem>
+							<SidebarMenuButton asChild>
+								<Link href="/dashboard/data-collection">
+									<Database /> Data Collection
 								</Link>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
