@@ -409,3 +409,182 @@
     transform: translate(-50%, -50%) rotate(90deg);
     animation: rotate 24s linear infinite, pulse 5s ease-in-out infinite 2s;
 }
+
+/* ========== ADDITIONAL ANIMATIONS ========== */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    25% {
+        transform: translateY(-20px) translateX(10px);
+    }
+
+    50% {
+        transform: translateY(0) translateX(20px);
+    }
+
+    75% {
+        transform: translateY(20px) translateX(10px);
+    }
+}
+
+@keyframes drift {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes wave-move {
+    0% {
+        transform: translateX(-100%) scaleY(1);
+    }
+
+    50% {
+        transform: translateX(0) scaleY(0.8);
+    }
+
+    100% {
+        transform: translateX(100%) scaleY(1);
+    }
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px currentColor, 0 0 40px currentColor;
+        opacity: 0.6;
+    }
+
+    50% {
+        box-shadow: 0 0 40px currentColor, 0 0 80px currentColor;
+        opacity: 1;
+    }
+}
+
+/* Floating Particles */
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.5;
+    animation: float 8s ease-in-out infinite;
+}
+
+.particle-1 {
+    top: 20%;
+    left: 10%;
+    color: #ff0080;
+    animation-delay: 0s;
+}
+
+.particle-2 {
+    top: 30%;
+    left: 80%;
+    color: #00ffff;
+    animation-delay: 1s;
+}
+
+.particle-3 {
+    top: 60%;
+    left: 15%;
+    color: #ffff00;
+    animation-delay: 2s;
+}
+
+.particle-4 {
+    top: 70%;
+    left: 75%;
+    color: #00ff88;
+    animation-delay: 3s;
+}
+
+.particle-5 {
+    top: 45%;
+    left: 5%;
+    color: #ff00ff;
+    animation-delay: 4s;
+}
+
+.particle-6 {
+    top: 85%;
+    left: 60%;
+    color: #0088ff;
+    animation-delay: 5s;
+}
+
+/* Glowing Orbs */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(30px);
+    animation: drift 15s ease-in-out infinite, glow 4s ease-in-out infinite;
+}
+
+.orb-1 {
+    top: 10%;
+    right: 20%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(255, 0, 128, 0.4), transparent);
+    color: rgba(255, 0, 128, 0.5);
+    animation-delay: 0s;
+}
+
+.orb-2 {
+    bottom: 20%;
+    left: 10%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 255, 255, 0.3), transparent);
+    color: rgba(0, 255, 255, 0.4);
+    animation-delay: 5s;
+}
+
+.orb-3 {
+    top: 60%;
+    right: 5%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(136, 0, 255, 0.4), transparent);
+    color: rgba(136, 0, 255, 0.5);
+    animation-delay: 10s;
+}
+
+/* Wave Lines */
+.wave {
+    position: absolute;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: wave-move 10s linear infinite;
+}
+
+.wave-1 {
+    top: 30%;
+    opacity: 0.3;
+    animation-delay: 0s;
+}
+
+.wave-2 {
+    top: 70%;
+    opacity: 0.2;
+    animation-delay: 5s;
+}
