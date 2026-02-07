@@ -9,7 +9,7 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { OrganizationSelector } from "@/components/auth/organization-selector";
-import { Cog, LayoutDashboard, Video, PenTool, Circle, BarChart3, Rocket, Globe, Calculator, AppWindow, Edit, Columns } from "lucide-react";
+import { Cog, LayoutDashboard, Video, PenTool, Circle, BarChart3, Rocket, Globe, Calculator, AppWindow, Edit, Columns, FileText } from "lucide-react";
 import Link from "next/link";
 
 export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
@@ -84,6 +84,13 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 							<SidebarMenuButton asChild>
 								<Link href="/dashboard/split">
 									<Columns /> Split View
+								</Link>
+							</SidebarMenuButton>
+						</SidebarMenuItem>
+						<SidebarMenuItem>
+							<SidebarMenuButton asChild>
+								<Link href="/dashboard/pdf-viewer">
+									<FileText /> PDF Viewer
 								</Link>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
