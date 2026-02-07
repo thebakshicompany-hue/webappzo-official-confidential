@@ -2,12 +2,17 @@
 
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Clock } from 'lucide-react';
+import { Clock, MapPin } from 'lucide-react';
 
 export function ClockWidget() {
     const [time, setTime] = useState(new Date());
+    const [timezone, setTimezone] = useState('');
 
     useEffect(() => {
+        // Get user's timezone
+        const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        setTimezone(tz);
+
         const timer = setInterval(() => setTime(new Date()), 1000);
         return () => clearInterval(timer);
     }, []);
@@ -18,6 +23,7 @@ export function ClockWidget() {
             minute: '2-digit',
             second: '2-digit',
             hour12: true,
+            timeZone: timezone || undefined,
         });
     };
 
@@ -27,7 +33,15 @@ export function ClockWidget() {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
+            timeZone: timezone || undefined,
         });
+    };
+
+    const getTimezoneAbbr = () => {
+        return new Date().toLocaleTimeString('en-US', {
+            timeZoneName: 'short',
+            timeZone: timezone || undefined,
+        }).split(' ').pop();
     };
 
     return (
@@ -41,6 +55,10 @@ export function ClockWidget() {
             <CardContent>
                 <div className="text-3xl font-bold tabular-nums">{formatTime(time)}</div>
                 <div className="text-sm text-muted-foreground mt-1">{formatDate(time)}</div>
+                <div className="flex items-center gap-1 text-xs text-muted-foreground mt-2">
+                    <MapPin className="h-3 w-3" />
+                    <span>{timezone} ({getTimezoneAbbr()})</span>
+                </div>
             </CardContent>
         </Card>
     );
