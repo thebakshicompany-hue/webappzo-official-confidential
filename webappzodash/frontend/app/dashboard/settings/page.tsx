@@ -8,13 +8,14 @@ import { Label } from "@/components/ui/label";
 import { usePocketBaseAuth } from "@/hooks/use-pocketbase-auth";
 import { useTheme as useAnimatedTheme, themes } from "@/contexts/theme-context";
 import { useTheme } from "next-themes";
-import { LogOut, Sun, Moon, Monitor, Palette, User, Lock, Save, Check } from "lucide-react";
+import { Switch } from "@/components/ui/switch";
+import { LogOut, Sun, Moon, Monitor, Palette, User, Lock, Save, Check, Zap, ZapOff } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export default function SettingsPage() {
 	const { user, logout, updateProfile, updatePassword, loading } = usePocketBaseAuth();
 	const router = useRouter();
-	const { theme: animatedTheme, setTheme: setAnimatedTheme } = useAnimatedTheme();
+	const { theme: animatedTheme, setTheme: setAnimatedTheme, animationsEnabled, setAnimationsEnabled } = useAnimatedTheme();
 	const { theme: mode, setTheme: setMode, resolvedTheme } = useTheme();
 	const [mounted, setMounted] = useState(false);
 
@@ -245,8 +246,25 @@ export default function SettingsPage() {
 						</div>
 					</div>
 
+					{/* Animation Toggle */}
+					<div className="flex items-center justify-between p-4 rounded-lg border border-white/5 bg-white/5">
+						<div className="space-y-0.5">
+							<Label className="text-base font-medium flex items-center gap-2">
+								{animationsEnabled ? <Zap className="h-4 w-4 text-yellow-500" /> : <ZapOff className="h-4 w-4 text-muted-foreground" />}
+								Enable Animations
+							</Label>
+							<CardDescription>
+								Disable background and UI animations for better performance
+							</CardDescription>
+						</div>
+						<Switch
+							checked={animationsEnabled}
+							onCheckedChange={setAnimationsEnabled}
+						/>
+					</div>
+
 					{/* Animated Theme Selection */}
-					<div className="space-y-3">
+					<div className={`space-y-3 transition-opacity duration-300 ${animationsEnabled ? 'opacity-100' : 'opacity-50 pointer-events-none'}`}>
 						<Label className="text-base font-medium">Animation Theme</Label>
 						<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
 							{themes.map((t) => (
