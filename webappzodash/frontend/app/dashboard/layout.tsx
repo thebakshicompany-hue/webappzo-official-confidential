@@ -19,17 +19,26 @@ export default function DashboardLayout({
 
 			<div className="w-full h-full flex flex-col bg-transparent">
 				<header className="flex items-center px-2 py-2 gap-2 bg-background/40 backdrop-blur-md border-b border-white/10 shrink-0">
-					<SidebarTrigger />
-					<Separator orientation="vertical" />
+					<SidebarTrigger className="h-8 w-8" />
+					<Separator orientation="vertical" className="h-4" />
 
-					<div className="grow flex items-center justify-between">
-						<Image
-							src="/webappzo-logo.png"
-							alt="WEBAPPZO"
-							width={100}
-							height={32}
-							className="h-6 w-auto"
-						/>
+					<div className="grow flex items-center justify-between min-w-0">
+						<div className="flex items-center gap-2 min-w-0">
+							<Image
+								src="/webappzo-logo.png"
+								alt="WEBAPPZO"
+								width={100}
+								height={32}
+								className="h-5 w-auto block xs:hidden"
+							/>
+							<Image
+								src="/webappzo-logo.png"
+								alt="WEBAPPZO"
+								width={100}
+								height={32}
+								className="h-6 w-auto hidden xs:block"
+							/>
+						</div>
 
 						<div className="flex items-center gap-2">
 							<ThemePicker />

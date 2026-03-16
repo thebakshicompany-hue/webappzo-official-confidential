@@ -32,8 +32,8 @@ export default function SignInPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center p-4">
-            <Card className="w-full max-w-md auth-card-overlay border-white/20">
+        <div className="min-h-screen flex items-center justify-center p-2 sm:p-4">
+            <Card className="w-full max-w-sm sm:max-w-md auth-card-overlay border-white/20">
                 <CardHeader className="space-y-1">
                     <div className="flex items-center justify-center mb-4">
                         <Image

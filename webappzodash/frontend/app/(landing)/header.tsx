@@ -23,30 +23,33 @@ export function Header() {
 					/>
 				</Link>
 
-				<nav className="flex items-center gap-4">
-					<Link href="https://bdpro.in" className="text-sm hover:underline">
-						Company
-					</Link>
-				</nav>
+                <nav className="hidden sm:flex items-center gap-4">
+                    <Link href="https://bdpro.in" className="text-sm hover:underline">
+                        Company
+                    </Link>
+                </nav>
 
-				{!loading && !isAuthenticated && (
-					<Button asChild>
-						<Link href="/sign-in">
-							Sign in <ArrowRight />
-						</Link>
-					</Button>
-				)}
+                <div className="flex items-center gap-2 sm:gap-4">
+                    {!loading && !isAuthenticated && (
+                        <Button asChild size="sm" className="sm:h-9">
+                            <Link href="/sign-in">
+                                Sign in <ArrowRight className="h-4 w-4 ml-1 hidden xs:inline" />
+                            </Link>
+                        </Button>
+                    )}
 
-				{!loading && isAuthenticated && (
-					<div className="flex items-center gap-4">
-						<Button asChild variant="outline">
-							<Link href="/dashboard">
-								Dashboard <ArrowRight />
-							</Link>
-						</Button>
-						<UserMenu />
-					</div>
-				)}
+                    {!loading && isAuthenticated && (
+                        <>
+                            <Button asChild variant="outline" size="sm" className="sm:h-9">
+                                <Link href="/dashboard">
+                                    <span className="hidden xs:inline">Dashboard</span>
+                                    <ArrowRight className="h-4 w-4 xs:ml-1" />
+                                </Link>
+                            </Button>
+                            <UserMenu />
+                        </>
+                    )}
+                </div>
 			</div>
 		</header>
 	);

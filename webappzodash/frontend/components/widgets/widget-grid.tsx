@@ -127,7 +127,7 @@ export function WidgetGrid({ availableWidgets, defaultWidgets }: WidgetGridProps
                 </Dialog>
             </div>
 
-            <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+            <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
                 {activeWidgets.map((widgetId) => {
                     const widget = availableWidgets.find((w) => w.id === widgetId);
                     if (!widget) return null;
@@ -142,17 +142,17 @@ export function WidgetGrid({ availableWidgets, defaultWidgets }: WidgetGridProps
                             onDragOver={(e) => handleDragOver(e, widget.id)}
                             onDragEnd={handleDragEnd}
                         >
-                            <div className="absolute -top-2 -right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1">
+                            <div className="absolute -top-1.5 -right-1.5 z-10 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity flex gap-1">
                                 <Button
                                     variant="destructive"
                                     size="icon"
-                                    className="h-6 w-6"
+                                    className="h-7 w-7 sm:h-6 sm:w-6 shadow-md"
                                     onClick={() => removeWidget(widget.id)}
                                 >
-                                    <X className="h-3 w-3" />
+                                    <X className="h-4 w-4 sm:h-3 sm:w-3" />
                                 </Button>
                             </div>
-                            <div className="absolute top-2 left-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity cursor-grab">
+                            <div className="absolute top-2 left-2 z-10 opacity-0 sm:group-hover:opacity-100 transition-opacity cursor-grab hidden sm:block">
                                 <GripVertical className="h-4 w-4 text-muted-foreground" />
                             </div>
                             {widget.component}
