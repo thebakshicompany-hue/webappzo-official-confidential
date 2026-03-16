@@ -12,7 +12,7 @@ export function OrganizationCard() {
 
     useEffect(() => {
         // Get organization from localStorage
-        const name = localStorage.getItem('current_organization_name');
+        const name = localStorage.getItem('currentOrgName');
         setOrgName(name);
         setLoading(false);
     }, []);
