@@ -70,13 +70,6 @@ export async function createOrganization(name: string, description?: string) {
         created_by: user.id,
     });
 
-    // Create user-organization relationship with owner role
-    await pb.collection('user_organizations').create({
-        user: user.id,
-        organization: org.id,
-        role: 'owner',
-    });
-
     return org as unknown as Organization;
 }
 
@@ -85,18 +78,12 @@ export async function getUserOrganizations(): Promise<Organization[]> {
     if (!user) return [];
 
     try {
-        // Get user-organization relationships
-        const userOrgs = await pb.collection('user_organizations').getFullList({
-            filter: `user = "${user.id}"`,
-            expand: 'organization',
+        // Get organizations directly where the user is the owner/creator
+        const organizations = await pb.collection('organizations').getFullList({
+            filter: `owner = "${user.id}" || created_by = "${user.id}"`,
         });
 
-        // Extract organizations from expanded data
-        const organizations = userOrgs
-            .map((userOrg: any) => userOrg.expand?.organization)
-            .filter(Boolean);
-
-        return organizations as Organization[];
+        return organizations as unknown as Organization[];
     } catch (error) {
         console.error('Failed to get user organizations:', error);
         return [];
