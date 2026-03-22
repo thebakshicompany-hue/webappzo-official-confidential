@@ -1,3 +1,5 @@
+'use client';
+
 import {
 	Sidebar,
 	SidebarContent,
@@ -9,11 +11,13 @@ import {
 	SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { OrganizationSelector } from "@/components/auth/organization-selector";
-import { Cog, LayoutDashboard, Video, PenTool, Circle, BarChart3, Rocket, Globe, Calculator, AppWindow, Edit, Columns, FileText, Database } from "lucide-react";
+import { Cog, LayoutDashboard, Video, PenTool, Circle, BarChart3, Rocket, Globe, Calculator, AppWindow, Edit, Columns, FileText, Database, Settings } from "lucide-react";
 import Link from "next/link";
+import { usePocketBaseAuth } from "@/hooks/use-pocketbase-auth";
 
 export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 	const { ...rest } = props;
+	const { user } = usePocketBaseAuth();
 
 	return (
 		<Sidebar {...rest}>
@@ -122,6 +126,15 @@ export function AppSidebar(props: React.ComponentProps<typeof Sidebar>) {
 								</Link>
 							</SidebarMenuButton>
 						</SidebarMenuItem>
+						{user?.plan === 'max' && (
+							<SidebarMenuItem>
+								<SidebarMenuButton asChild>
+									<Link href="/dashboard/management">
+										<Settings /> Management
+									</Link>
+								</SidebarMenuButton>
+							</SidebarMenuItem>
+						)}
 					</SidebarMenu>
 				</SidebarGroup>
 			</SidebarContent>
