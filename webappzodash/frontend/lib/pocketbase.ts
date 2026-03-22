@@ -24,6 +24,7 @@ export interface User {
     email: string;
     name: string;
     avatar?: string;
+    plan?: string;
     created: string;
     updated: string;
     verified: boolean;

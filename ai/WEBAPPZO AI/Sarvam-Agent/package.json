@@ -1,0 +1,8 @@
+{
+  "name": "sarvam-agent",
+  "version": "1.0.0",
+  "description": "SURAJ by WebAppzo - General Agent",
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}
