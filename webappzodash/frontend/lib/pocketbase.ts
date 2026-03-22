@@ -2,7 +2,7 @@ import PocketBase from 'pocketbase';
 
 // Initialize PocketBase client
 const pb = new PocketBase(
-    process.env.NEXT_PUBLIC_POCKETBASE_URL || 'http://localhost:8090'
+    process.env.NEXT_PUBLIC_POCKETBASE_URL || 'https://pocketbase.bdpro.in'
 );
 
 // Enable auto cancellation for pending requests
