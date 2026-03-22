@@ -21,7 +21,7 @@ export function AppsWidget() {
     if (user?.plan === 'max') {
         displayApps.push({
             name: 'Management',
-            href: 'https://bakshi.netlify.app/',
+            href: '/dashboard/management',
             icon: Settings,
             color: 'text-yellow-500',
         });
