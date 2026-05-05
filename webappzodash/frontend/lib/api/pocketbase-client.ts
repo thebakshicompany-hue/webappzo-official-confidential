@@ -27,6 +27,21 @@ export async function signIn(email: string, password: string) {
     return authData;
 }
 
+export async function signInWithGoogle() {
+    // PocketBase OAuth2 flow
+    const authData = await pb.collection('users').authWithOAuth2({ provider: 'google' });
+    
+    // If the user is new, update their profile with Google data
+    if (authData.meta?.isNew) {
+        const formData = new FormData();
+        if (authData.meta.name) formData.append('name', authData.meta.name);
+        // Sync avatar if needed, but keeping it simple for now
+        await pb.collection('users').update(authData.record.id, formData);
+    }
+
+    return authData;
+}
+
 export async function signOut() {
     pb.authStore.clear();
 }

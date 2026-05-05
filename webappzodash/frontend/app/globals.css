@@ -175,6 +175,34 @@ body {
 		position: relative;
 		z-index: 1;
 	}
+
+	/* Compact mobile layout overrides */
+	@media (max-width: 640px) {
+		:root {
+			--radius: 0.5rem;
+		}
+
+		/* Minimize Lucide icons globally on mobile */
+		.lucide {
+			width: 18px !important;
+			height: 18px !important;
+		}
+
+		/* Tighter typography */
+		h1 { font-size: 1.5rem !important; }
+		h2 { font-size: 1.25rem !important; }
+		h3 { font-size: 1.1rem !important; }
+		p { font-size: 0.875rem !important; line-height: 1.4 !important; }
+
+		/* Compact padding for cards and containers */
+		.card {
+			padding: 1rem !important;
+		}
+		
+		.p-4 { padding: 0.75rem !important; }
+		.p-6 { padding: 1rem !important; }
+		.gap-6 { gap: 1rem !important; }
+	}
 }
 
 /* Fix Chatling chat widget overlay issue */

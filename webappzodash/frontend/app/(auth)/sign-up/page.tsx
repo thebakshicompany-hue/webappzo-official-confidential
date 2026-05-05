@@ -13,7 +13,7 @@ import '../../animated-bg.css';
 
 export default function SignUpPage() {
     const router = useRouter();
-    const { register, loading } = usePocketBaseAuth();
+    const { register, loginWithGoogle, loading } = usePocketBaseAuth();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -32,34 +32,46 @@ export default function SignUpPage() {
         }
     };
 
+    const handleGoogleSignUp = async () => {
+        setError(null);
+        try {
+            await loginWithGoogle();
+            router.push('/select-organization');
+        } catch (err: any) {
+            console.error('Google sign-up error:', err);
+            setError('Google sign-up failed. Please try again.');
+        }
+    };
+
     return (
-        <div className="min-h-screen flex items-center justify-center p-4">
-            <Card className="w-full max-w-md auth-card-overlay border-white/20">
-                <CardHeader className="space-y-1">
-                    <div className="flex items-center justify-center mb-4">
+        <div className="min-h-screen flex items-center justify-center p-2 sm:p-4">
+            <Card className="w-full max-w-[340px] sm:max-w-md auth-card-overlay border-white/20 shadow-2xl">
+                <CardHeader className="space-y-1 p-4 sm:p-6 pb-2 sm:pb-4">
+                    <div className="flex items-center justify-center mb-2 sm:mb-4">
                         <Image
                             src="/webappzo-logo.png"
                             alt="WEBAPPZO"
-                            width={200}
-                            height={60}
+                            width={160}
+                            height={48}
                             priority
+                            className="w-32 sm:w-48 h-auto"
                         />
                     </div>
-                    <CardTitle className="text-2xl text-center text-white">Create an account</CardTitle>
-                    <CardDescription className="text-center text-gray-300">
+                    <CardTitle className="text-xl sm:text-2xl text-center text-white">Create an account</CardTitle>
+                    <CardDescription className="text-center text-gray-300 text-xs sm:text-sm">
                         Enter your information to get started
                     </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="p-4 sm:p-6 pt-2 sm:pt-4">
                     {error && (
-                        <div className="bg-red-500/10 text-red-400 px-4 py-3 rounded-md mb-4 border border-red-500/20">
+                        <div className="bg-red-500/10 text-red-400 px-3 py-2 sm:px-4 sm:py-3 rounded-md mb-3 sm:mb-4 border border-red-500/20 text-xs">
                             {error}
                         </div>
                     )}
 
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="name" className="text-white">Full Name</Label>
+                    <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+                        <div className="space-y-1.5 sm:space-y-2">
+                            <Label htmlFor="name" className="text-white text-xs sm:text-sm">Full Name</Label>
                             <Input
                                 id="name"
                                 type="text"
@@ -69,12 +81,12 @@ export default function SignUpPage() {
                                 required
                                 autoComplete="name"
                                 disabled={loading}
-                                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                                className="h-9 sm:h-10 bg-white/10 border-white/20 text-white placeholder:text-gray-400 text-sm"
                             />
                         </div>
 
-                        <div className="space-y-2">
-                            <Label htmlFor="email" className="text-white">Email</Label>
+                        <div className="space-y-1.5 sm:space-y-2">
+                            <Label htmlFor="email" className="text-white text-xs sm:text-sm">Email</Label>
                             <Input
                                 id="email"
                                 type="email"
@@ -84,12 +96,12 @@ export default function SignUpPage() {
                                 required
                                 autoComplete="email"
                                 disabled={loading}
-                                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                                className="h-9 sm:h-10 bg-white/10 border-white/20 text-white placeholder:text-gray-400 text-sm"
                             />
                         </div>
 
-                        <div className="space-y-2">
-                            <Label htmlFor="password" className="text-white">Password</Label>
+                        <div className="space-y-1.5 sm:space-y-2">
+                            <Label htmlFor="password" className="text-white text-xs sm:text-sm">Password</Label>
                             <Input
                                 id="password"
                                 type="password"
@@ -100,25 +112,43 @@ export default function SignUpPage() {
                                 autoComplete="new-password"
                                 disabled={loading}
                                 minLength={8}
-                                className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
+                                className="h-9 sm:h-10 bg-white/10 border-white/20 text-white placeholder:text-gray-400 text-sm"
                             />
-                            <p className="text-xs text-gray-400">
-                                Must be at least 8 characters long
-                            </p>
+                        </div>
+
+                        <div className="pt-1">
+                            <Button
+                                type="submit"
+                                className="w-full h-10 sm:h-11 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:from-pink-600 hover:via-red-600 hover:to-yellow-600 text-white font-bold text-sm"
+                                disabled={loading}
+                            >
+                                {loading ? 'Creating account...' : 'Create account'}
+                            </Button>
+                        </div>
+
+                        <div className="flex items-center gap-3 my-1 sm:my-2">
+                            <div className="flex-1 h-[1px] bg-white/10"></div>
+                            <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">OR</span>
+                            <div className="flex-1 h-[1px] bg-white/10"></div>
                         </div>
 
                         <Button
-                            type="submit"
-                            className="w-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 hover:from-pink-600 hover:via-red-600 hover:to-yellow-600 text-white font-semibold"
+                            type="button"
+                            variant="outline"
+                            onClick={handleGoogleSignUp}
                             disabled={loading}
+                            className="w-full h-10 sm:h-11 bg-white/5 border-white/10 text-white hover:bg-white/10 flex items-center justify-center gap-3 text-sm font-bold"
                         >
-                            {loading ? 'Creating account...' : 'Create account'}
+                            <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24">
+                                <path fill="#EA4335" d="M12.48 10.92v3.28h7.84c-.24 1.84-.9 3.32-2.04 4.44-1.12 1.12-2.8 2.32-5.8 2.32-4.81 0-8.68-3.92-8.68-8.73s3.87-8.73 8.68-8.73c2.6 0 4.56 1.02 5.96 2.35l2.36-2.36C18.44 1.44 15.64 0 12.48 0 5.58 0 0 5.58 0 12.48s5.58 12.48 12.48 12.48c3.75 0 6.58-1.24 8.75-3.52 2.21-2.21 2.91-5.35 2.91-7.85 0-.54-.05-1.07-.15-1.58h-11.5z" />
+                            </svg>
+                            Continue with Google
                         </Button>
                     </form>
 
-                    <div className="mt-4 text-center text-sm text-gray-300">
+                    <div className="mt-4 text-center text-xs text-gray-400">
                         Already have an account?{' '}
-                        <Link href="/sign-in" className="text-pink-400 hover:text-pink-300 hover:underline">
+                        <Link href="/sign-in" className="text-pink-400 font-bold hover:text-pink-300 hover:underline">
                             Sign in
                         </Link>
                     </div>

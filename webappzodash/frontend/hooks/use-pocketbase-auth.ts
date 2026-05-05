@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import pb from '@/lib/pocketbase';
 import type { User } from '@/lib/pocketbase';
-import { signIn, signUp, signOut, getCurrentUser } from '@/lib/api/pocketbase-client';
+import { signIn, signInWithGoogle, signUp, signOut, getCurrentUser } from '@/lib/api/pocketbase-client';
 
 export function usePocketBaseAuth() {
     const [user, setUser] = useState<User | null>(null);
@@ -47,6 +47,23 @@ export function usePocketBaseAuth() {
             return authData;
         } catch (err: any) {
             const errorMessage = err?.message || 'Failed to login';
+            setError(errorMessage);
+            throw err;
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    // Google Login function
+    const loginWithGoogle = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const authData = await signInWithGoogle();
+            setUser(authData.record as unknown as User);
+            return authData;
+        } catch (err: any) {
+            const errorMessage = err?.message || 'Failed to login with Google';
             setError(errorMessage);
             throw err;
         } finally {
@@ -132,6 +149,7 @@ export function usePocketBaseAuth() {
         error,
         isAuthenticated: !!user && pb.authStore.isValid,
         login,
+        loginWithGoogle,
         register,
         logout,
         updateProfile,
