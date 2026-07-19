@@ -22,8 +22,8 @@ export default function Home() {
 				</div>
 			</section>
 		</div>
-		<html lang="en">
-<head>
+	<div>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Thank You &amp; Farewell</title>
@@ -416,8 +416,7 @@ export default function Home() {
   }
 })();
 </script>
-</body>
-</html>
+</div>
 }
 	);
 }
