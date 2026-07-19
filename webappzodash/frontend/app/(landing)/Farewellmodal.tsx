@@ -338,7 +338,7 @@ export default function FarewellModal() {
 
 					<div className="fwm-fw fwm-fade fwm-d4 fwm-layer">
 						<div className="fwm-actions">
-							<a className="fwm-cta" href="mailto:support@yourdomain.com">
+							<a className="fwm-cta" href="https://forms.gle/njtrcU2xihQXN25N7">
 								Contact support
 								<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path
