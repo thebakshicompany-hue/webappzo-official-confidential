@@ -1,4 +1,4 @@
-import FarewellModal from "@/components/FarewellModal";
+import FarewellModal from "Farewellmodal.tsx";
 
 export default function Home() {
 	return (
