@@ -22,5 +22,402 @@ export default function Home() {
 				</div>
 			</section>
 		</div>
+		<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You &amp; Farewell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#050203;
+    --ink:#f5eeee;
+    --muted:#a89a9c;
+    --dim:#5c4f52;
+    --crimson:#e5484d;
+    --crimson-deep:#7f1d24;
+    --ember:#ff8a5c;
+    --card:#120a0c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- 3D sunset canvas ---------- */
+  #scene{
+    position:fixed; inset:0; z-index:0; display:block;
+  }
+  .vignette{
+    position:fixed; inset:0; z-index:1; pointer-events:none;
+    background:
+      radial-gradient(ellipse at 50% 120%, transparent 30%, rgba(5,2,3,.75) 80%),
+      linear-gradient(to bottom, rgba(5,2,3,.85) 0%, transparent 30%, transparent 70%, rgba(5,2,3,.9) 100%);
+  }
+  .grain{
+    position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- layout ---------- */
+  .stage{
+    position:relative; z-index:2;
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    padding:64px 20px;
+    perspective:1400px;
+  }
+
+  /* ---------- 3D tilting card ---------- */
+  .card{
+    width:min(620px,100%);
+    transform-style:preserve-3d;
+    will-change:transform;
+    text-align:center;
+    display:flex; flex-direction:column; align-items:center;
+  }
+  .layer{transform-style:preserve-3d}
+
+  /* badge */
+  .badge{
+    width:84px;height:84px;border-radius:22px;
+    display:flex;align-items:center;justify-content:center;
+    background:linear-gradient(140deg,#c1272d 0%,#5e0f16 100%);
+    border:1px solid rgba(229,72,77,.4);
+    box-shadow:
+      0 24px 48px -12px rgba(178,32,40,.5),
+      inset 0 1px 0 rgba(255,255,255,.22),
+      inset 0 -12px 24px rgba(0,0,0,.35);
+    transform:translateZ(90px);
+    animation:bob 6s ease-in-out infinite;
+    margin-bottom:36px;
+  }
+  .badge svg{width:40px;height:40px;color:#ffe9e6;filter:drop-shadow(0 2px 6px rgba(0,0,0,.4))}
+  @keyframes bob{
+    0%,100%{transform:translateZ(90px) translateY(0) rotateZ(0deg)}
+    50%{transform:translateZ(90px) translateY(-10px) rotateZ(2deg)}
+  }
+
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(2.3rem,6vw,3.6rem);
+    line-height:1.08;
+    letter-spacing:-.02em;
+    transform:translateZ(70px);
+    text-shadow:0 12px 40px rgba(0,0,0,.6);
+  }
+  h1 em{
+    font-style:italic; font-weight:700;
+    background:linear-gradient(100deg,var(--ember) 0%,var(--crimson) 55%,#a8232b 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+
+  .lede{
+    margin-top:22px;
+    max-width:46ch;
+    color:var(--muted);
+    font-size:clamp(.95rem,2.4vw,1.06rem);
+    font-weight:300;
+    line-height:1.75;
+    transform:translateZ(50px);
+  }
+
+  .rule{
+    width:52px;height:2px;margin:34px 0;
+    background:linear-gradient(90deg,transparent,var(--crimson),transparent);
+    box-shadow:0 0 14px rgba(229,72,77,.55);
+    transform:translateZ(40px);
+  }
+
+  /* glass info panel */
+  .panel{
+    width:min(480px,100%);
+    text-align:left;
+    background:linear-gradient(160deg,rgba(28,14,17,.82),rgba(12,6,8,.86));
+    border:1px solid rgba(229,72,77,.16);
+    border-top-color:rgba(255,255,255,.1);
+    border-radius:18px;
+    padding:26px 28px;
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    box-shadow:
+      0 30px 60px -20px rgba(0,0,0,.8),
+      inset 0 1px 0 rgba(255,255,255,.06);
+    transform:translateZ(55px);
+    display:flex;flex-direction:column;gap:18px;
+  }
+  .panel .row{display:flex;gap:14px;align-items:flex-start}
+  .panel .dot{
+    flex:none;margin-top:5px;width:8px;height:8px;border-radius:50%;
+    background:var(--crimson);
+    box-shadow:0 0 10px rgba(229,72,77,.8);
+  }
+  .panel h3{
+    font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:#f0a3a3;margin-bottom:4px;
+  }
+  .panel p{font-size:.9rem;line-height:1.65;color:#cabfc0;font-weight:300}
+  .panel strong{color:var(--ink);font-weight:500}
+
+  /* CTA */
+  .cta{
+    margin-top:40px;
+    transform:translateZ(75px);
+  }
+  .cta a{
+    position:relative;
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 30px;border-radius:14px;
+    font-size:.95rem;font-weight:500;letter-spacing:.01em;
+    color:#ffd9d4;text-decoration:none;
+    background:linear-gradient(140deg,rgba(193,39,45,.22),rgba(94,15,22,.3));
+    border:1px solid rgba(229,72,77,.45);
+    box-shadow:0 0 22px rgba(193,39,45,.18), inset 0 1px 0 rgba(255,255,255,.1);
+    transition:transform .35s cubic-bezier(.16,1,.3,1), box-shadow .35s, background .35s, color .35s;
+    transform-style:preserve-3d;
+  }
+  .cta a:hover{
+    transform:translateY(-3px) scale(1.03);
+    background:linear-gradient(140deg,#d92c33,#8f161e);
+    color:#fff;
+    box-shadow:0 16px 40px -8px rgba(217,44,51,.55), 0 0 30px rgba(229,72,77,.35);
+  }
+  .cta a:focus-visible{outline:2px solid var(--ember);outline-offset:3px}
+  .cta svg{width:16px;height:16px;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+  .cta a:hover svg{transform:translateX(5px)}
+
+  footer{
+    margin-top:60px;
+    font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--dim);
+    transform:translateZ(30px);
+  }
+
+  /* ---------- entrance ---------- */
+  .fade{opacity:0;animation:fadeUp 1.1s cubic-bezier(.16,1,.3,1) forwards}
+  .d1{animation-delay:.15s}.d2{animation-delay:.3s}.d3{animation-delay:.45s}.d4{animation-delay:.6s}.d5{animation-delay:.75s}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  /* keep translateZ after animation: animate a wrapper instead */
+  .fw{transform-style:preserve-3d}
+
+  @media (prefers-reduced-motion: reduce){
+    *,*::before,*::after{animation-duration:.001s !important;animation-iteration-count:1 !important;transition-duration:.001s !important}
+    .fade{opacity:1}
+    .badge{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="scene" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+
+<div class="stage">
+  <main class="card" id="card">
+
+    <div class="fw fade layer"><div class="badge">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+      </svg>
+    </div></div>
+
+    <div class="fw fade d1 layer">
+      <h1>Every journey has<br>its <em>sunset.</em></h1>
+    </div>
+
+    <div class="fw fade d2 layer">
+      <p class="lede">We are deeply sorry to announce that our platform is winding down operations. Making the decision to discontinue a service we built with pride—and that you trusted—was incredibly difficult.</p>
+    </div>
+
+    <div class="fw fade d3 layer"><div class="rule"></div></div>
+
+    <div class="fw fade d3 layer" style="width:100%;display:flex;justify-content:center">
+      <div class="panel">
+        <div class="row">
+          <span class="dot"></span>
+          <div>
+            <h3>Data &amp; Accounts</h3>
+            <p>Download your data and export backups directly from your dashboard until <strong>[Insert Date]</strong>.</p>
+          </div>
+        </div>
+        <div class="row">
+          <span class="dot"></span>
+          <div>
+            <h3>Subscriptions</h3>
+            <p>All active paid plans have been stopped, and prorated refunds are processing automatically.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fw fade d4 layer"><div class="cta">
+      <a href="mailto:support@yourdomain.com">
+        Contact support
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div></div>
+
+    <div class="fw fade d5 layer"><footer>Thank you for being part of our story</footer></div>
+
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ============ 3D sunset scene ============ */
+  var canvas = document.getElementById('scene');
+  var renderer, scene, camera, terrain, sun, halo, clock;
+  var ok = true;
+  try{
+    renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:true, alpha:false});
+  }catch(e){ ok = false; canvas.style.display = 'none'; }
+
+  if(ok){
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x050203);
+    scene.fog = new THREE.Fog(0x050203, 18, 95);
+
+    camera = new THREE.PerspectiveCamera(60, 1, 0.1, 200);
+    camera.position.set(0, 3.2, 26);
+    camera.lookAt(0, 2.5, 0);
+
+    /* --- wireframe terrain --- */
+    var geo = new THREE.PlaneGeometry(220, 120, 110, 60);
+    geo.rotateX(-Math.PI/2);
+    var pos = geo.attributes.position;
+    var base = new Float32Array(pos.array.length);
+    base.set(pos.array);
+
+    var mat = new THREE.MeshBasicMaterial({
+      color:0x8f1b22, wireframe:true, transparent:true, opacity:0.5
+    });
+    terrain = new THREE.Mesh(geo, mat);
+    terrain.position.y = -1.5;
+    scene.add(terrain);
+
+    /* --- sun with radial-gradient texture --- */
+    function radialTex(stops, size){
+      var c = document.createElement('canvas'); c.width = c.height = size;
+      var g = c.getContext('2d');
+      var grad = g.createRadialGradient(size/2,size/2,0,size/2,size/2,size/2);
+      stops.forEach(function(s){ grad.addColorStop(s[0], s[1]); });
+      g.fillStyle = grad; g.fillRect(0,0,size,size);
+      var t = new THREE.CanvasTexture(c); return t;
+    }
+    var sunTex = radialTex([[0,'#fff3ea'],[0.25,'#ffb37c'],[0.55,'#e5484d'],[0.8,'rgba(127,29,36,0.6)'],[1,'rgba(127,29,36,0)']], 512);
+    sun = new THREE.Sprite(new THREE.SpriteMaterial({map:sunTex, transparent:true, depthWrite:false}));
+    sun.scale.set(30,30,1);
+    sun.position.set(0, 6.5, -70);
+    scene.add(sun);
+
+    var haloTex = radialTex([[0,'rgba(229,72,77,0.35)'],[0.5,'rgba(178,32,40,0.12)'],[1,'rgba(178,32,40,0)']], 512);
+    halo = new THREE.Sprite(new THREE.SpriteMaterial({map:haloTex, transparent:true, depthWrite:false}));
+    halo.scale.set(110,70,1);
+    halo.position.set(0, 8, -71);
+    scene.add(halo);
+
+    /* --- drifting dust particles --- */
+    var pGeo = new THREE.BufferGeometry();
+    var COUNT = 260, pArr = new Float32Array(COUNT*3);
+    for(var i=0;i<COUNT;i++){
+      pArr[i*3]   = (Math.random()-0.5)*140;
+      pArr[i*3+1] = Math.random()*22;
+      pArr[i*3+2] = -Math.random()*90;
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pArr,3));
+    var dotTex = radialTex([[0,'rgba(255,180,160,1)'],[0.4,'rgba(229,72,77,0.6)'],[1,'rgba(229,72,77,0)']],64);
+    var particles = new THREE.Points(pGeo, new THREE.PointsMaterial({
+      size:0.55, map:dotTex, transparent:true, depthWrite:false, opacity:0.7,
+      blending:THREE.AdditiveBlending
+    }));
+    scene.add(particles);
+
+    clock = new THREE.Clock();
+    var mouseX = 0, mouseY = 0, smX = 0, smY = 0;
+
+    window.addEventListener('pointermove', function(e){
+      mouseX = (e.clientX/window.innerWidth - .5)*2;
+      mouseY = (e.clientY/window.innerHeight - .5)*2;
+    }, {passive:true});
+
+    function resize(){
+      var w = window.innerWidth, h = window.innerHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w/h;
+      camera.updateProjectionMatrix();
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    var frozen = false;
+    function tick(){
+      var t = reduce ? 0 : clock.getElapsedTime();
+
+      if(!reduce || !frozen){
+        /* rolling terrain waves */
+        for(var i=0;i<pos.count;i++){
+          var x = base[i*3], z = base[i*3+2];
+          pos.array[i*3+1] = base[i*3+1]
+            + Math.sin(x*0.14 + t*0.6)*Math.cos(z*0.11 + t*0.4)*1.4
+            + Math.sin(z*0.05 + t*0.25)*2.2
+            + Math.max(0,(Math.abs(x)-14))*0.16;   /* valley in the middle */
+        }
+        pos.needsUpdate = true;
+
+        /* slow sun breathing + particle drift */
+        var s = 30 + Math.sin(t*0.5)*1.2;
+        sun.scale.set(s,s,1);
+        particles.rotation.y = t*0.008;
+        particles.position.y = Math.sin(t*0.3)*0.4;
+
+        /* camera parallax (lerped) */
+        smX += (mouseX - smX)*0.03;
+        smY += (mouseY - smY)*0.03;
+        camera.position.x = smX*2.2;
+        camera.position.y = 3.2 - smY*1.1;
+        camera.lookAt(0, 2.5, -20);
+
+        renderer.render(scene, camera);
+        if(reduce) frozen = true;   /* render one static frame for reduced motion */
+      }
+      requestAnimationFrame(tick);
+    }
+    tick();
+  }
+
+  /* ============ card tilt (lerped, GPU-composited) ============ */
+  if(!reduce){
+    var card = document.getElementById('card');
+    var tx = 0, ty = 0, cx = 0, cy = 0;
+    window.addEventListener('pointermove', function(e){
+      tx = (e.clientX/window.innerWidth - .5);
+      ty = (e.clientY/window.innerHeight - .5);
+    }, {passive:true});
+    (function loop(){
+      cx += (tx - cx)*0.06;
+      cy += (ty - cy)*0.06;
+      card.style.transform = 'rotateY(' + (cx*7) + 'deg) rotateX(' + (-cy*5) + 'deg)';
+      requestAnimationFrame(loop);
+    })();
+  }
+})();
+</script>
+</body>
+</html>
+}
 	);
 }
