@@ -322,7 +322,7 @@ export default function FarewellModal() {
 									<h3>Data &amp; Accounts</h3>
 									<p>
 										Download your data and export backups directly from your dashboard until{" "}
-										<strong>[Insert Date]</strong>.
+										<strong>26th Oct 26</strong>.
 									</p>
 								</div>
 							</div>
