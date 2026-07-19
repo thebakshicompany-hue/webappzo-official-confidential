@@ -44,6 +44,7 @@
         "npm:@types/node@^22.13.9",
         "npm:@types/react-dom@19",
         "npm:@types/react@19",
+        "npm:@types/three@~0.185.1",
         "npm:class-variance-authority@~0.7.1",
         "npm:clsx@~2.1.1",
         "npm:cmdk@1.0.4",
@@ -64,6 +65,7 @@
         "npm:tailwind-merge@~3.0.2",
         "npm:tailwindcss-animate@~1.0.7",
         "npm:tailwindcss@4",
+        "npm:three@~0.185.1",
         "npm:typescript@^5.8.2",
         "npm:vaul@~1.1.2",
         "npm:zod@~3.24.2"
